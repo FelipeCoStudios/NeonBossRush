@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>NEON BOSS RUSH</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+  <div id="click-start">
+    <div class="title-glow">NEON BOSS RUSH</div>
+    <div class="start-hint">CLICK TO START</div>
+  </div>
+
+  <div id="ui-overlay">
+    <div id="menu-screen" class="screen active">
+      <h1 class="game-title">NEON BOSS RUSH</h1>
+      <div class="menu-buttons">
+        <button id="btn-play" class="menu-btn">PLAY</button>
+        <button id="btn-chars" class="menu-btn">CHARACTER SELECT</button>
+        <button id="btn-settings" class="menu-btn">SETTINGS</button>
+        <button id="btn-credits" class="menu-btn">CREDITS</button>
+      </div>
+    </div>
+
+    <div id="char-screen" class="screen">
+      <h2>SELECT CHARACTER</h2>
+      <div id="char-list"></div>
+      <button id="btn-start-rush" class="menu-btn" disabled>START BOSS RUSH</button>
+      <button id="btn-back-menu" class="menu-btn secondary">BACK</button>
+    </div>
+
+    <div id="settings-screen" class="screen">
+      <h2>SETTINGS</h2>
+      <div class="setting-row">
+        <label>Music Volume</label>
+        <input type="range" id="music-vol" min="0" max="1" step="0.05" value="0.4">
+      </div>
+      <div class="setting-row">
+        <label>SFX Volume</label>
+        <input type="range" id="sfx-vol" min="0" max="1" step="0.05" value="0.6">
+      </div>
+      <div class="setting-row">
+        <label>Mute</label>
+        <input type="checkbox" id="mute-toggle">
+      </div>
+      <button id="btn-back-settings" class="menu-btn secondary">BACK</button>
+    </div>
+
+    <div id="credits-screen" class="screen">
+      <h2>CREDITS</h2>
+      <p>NEON BOSS RUSH</p>
+      <p>Built with Three.js</p>
+      <p>Original concept – no copyrighted assets</p>
+      <button id="btn-back-credits" class="menu-btn secondary">BACK</button>
+    </div>
+
+    <div id="hud" class="hidden">
+      <div id="player-hud">
+        <div id="player-name">SOLDIER</div>
+        <div id="health-bar-wrap"><div id="health-bar"></div></div>
+        <div id="health-text">100/100</div>
+        <div id="special-ready">SPECIAL: READY</div>
+        <div id="powerup-status">POWER: NONE</div>
+        <div id="combo-display">COMBO: 0</div>
+      </div>
+      <div id="boss-hud">
+        <div id="boss-name">IRON BEAST</div>
+        <div id="boss-phase">PHASE 1</div>
+        <div id="boss-bar-wrap"><div id="boss-bar"></div></div>
+        <div id="boss-hp-text">100%</div>
+      </div>
+      <div id="score-time">
+        <span id="score">SCORE: 0</span>
+        <span id="timer">TIME: 0:00</span>
+      </div>
+    </div>
+
+    <div id="pause-screen" class="screen">
+      <h2>PAUSED</h2>
+      <button id="btn-resume" class="menu-btn">RESUME</button>
+      <button id="btn-restart" class="menu-btn">RESTART</button>
+      <button id="btn-quit" class="menu-btn secondary">QUIT TO MENU</button>
+    </div>
+
+    <div id="defeat-screen" class="screen">
+      <h2 class="defeat-title">DEFEATED</h2>
+      <p id="defeat-stats"></p>
+      <button id="btn-retry" class="menu-btn">RETRY</button>
+      <button id="btn-menu-defeat" class="menu-btn secondary">MENU</button>
+    </div>
+
+    <div id="victory-screen" class="screen">
+      <h2 class="victory-title">BOSS DEFEATED</h2>
+      <p id="victory-stats"></p>
+      <button id="btn-continue" class="menu-btn">CONTINUE</button>
+      <button id="btn-menu-victory" class="menu-btn secondary">MENU</button>
+    </div>
+
+    <div id="final-screen" class="screen">
+      <h2 class="victory-title">ALL BOSSES DESTROYED</h2>
+      <p id="final-stats"></p>
+      <button id="btn-play-again" class="menu-btn">PLAY AGAIN</button>
+      <button id="btn-menu-final" class="menu-btn secondary">MENU</button>
+    </div>
+  </div>
+
+  <div id="mobile-controls" class="hidden">
+    <div id="joystick-zone">
+      <div id="joystick-base"><div id="joystick-knob"></div></div>
+    </div>
+    <div id="mobile-btns">
+      <button id="btn-attack-m">ATK</button>
+      <button id="btn-dash-m">DASH</button>
+      <button id="btn-special-m">SPEC</button>
+      <button id="btn-power-m">PWR</button>
+    </div>
+  </div>
+
+  <canvas id="game-canvas"></canvas>
+  <script src="game.js"></script>
+</body>
+</html>
